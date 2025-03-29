@@ -1,28 +1,47 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" routerLink="/">GeoMedicos</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#generalNavbar">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      
-      <div class="collapse navbar-collapse" id="generalNavbar">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/">Inicio</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/doctors">Médicos</a>
-          </li>
-        </ul>
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/">
+      <img src="assets/images/logo.png" alt="GeoMedicos" height="40">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#generalNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="generalNavbar">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/doctores-y-centros">Doctores y centros</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/especialidades">Especialidades</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/enfermedades">Enfermedades</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/dentistas">Dentistas</a>
+        </li>
+      </ul>
 
-        <div class="d-flex">
-          @if (!authService.currentUser$) {
-            <div class="btn-group">
-              <a routerLink="/login" class="btn btn-outline-primary me-2">Iniciar Sesión</a>
-              <a routerLink="/register" class="btn btn-primary">Registrarse</a>
-            </div>
-          }
-        </div>
+      <div class="d-flex">
+        <a routerLink="/area-profesionales" class="btn btn-outline-primary me-2">Área para profesionales</a>
+        <a routerLink="/pide-cita" class="btn btn-primary me-2">Pide una cita</a>
+        @if (!authService.currentUser$) {
+          <a routerLink="/login" class="btn btn-outline-secondary">Iniciar sesión</a>
+        } @else {
+          <div class="dropdown">
+            <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="userMenu" data-bs-toggle="dropdown">
+              Mi cuenta
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" routerLink="/perfil">Mi perfil</a></li>
+              <li><a class="dropdown-item" routerLink="/mis-citas">Mis citas</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" (click)="authService.logout()">Cerrar sesión</a></li>
+            </ul>
+          </div>
+        }
       </div>
     </div>
-  </nav>
+  </div>
+</nav>
