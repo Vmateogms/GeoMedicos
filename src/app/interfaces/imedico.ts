@@ -1,6 +1,7 @@
+import { IUser } from "./iuser";
 
-export interface IMedico {
-    colegiado: string;
+export interface IMedico extends IUser {
+    colegiado: string; //el extends Iuser ya trae correo y role
     idUsuario: number;
     nombre: string;
     apellidos: string;
